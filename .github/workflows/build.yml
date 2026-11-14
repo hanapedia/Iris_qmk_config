@@ -1,0 +1,43 @@
+name: Build firmware
+
+on: [push, pull_request, workflow_dispatch]
+
+env:
+  QMK_REF: 0.34.8
+  KEYBOARD: keebio/iris/rev7
+  KEYMAP: hanapedia
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: qmkfm/qmk_cli:1.2.0
+
+    steps:
+      - name: Checkout QMK firmware
+        uses: actions/checkout@v4
+        with:
+          repository: qmk/qmk_firmware
+          ref: ${{ env.QMK_REF }}
+          path: qmk_firmware
+          submodules: recursive
+
+      - name: Checkout keymap
+        uses: actions/checkout@v4
+        with:
+          path: config
+
+      - name: Add keymap to QMK
+        run: cp -r config/keymaps/hanapedia qmk_firmware/keyboards/keebio/iris/keymaps/
+
+      - name: Compile
+        working-directory: qmk_firmware
+        run: |
+          git config --global --add safe.directory '*'
+          qmk compile -kb "$KEYBOARD" -km "$KEYMAP"
+
+      - name: Upload firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware
+          path: qmk_firmware/*.hex
+          if-no-files-found: error

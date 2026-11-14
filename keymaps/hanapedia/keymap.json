@@ -1,0 +1,44 @@
+{
+    "config": {
+        "features": {
+            "extrakey": false
+        },
+        "rgb_matrix": {
+            "animations": {
+                "alphas_mods": true,
+                "breathing": true,
+                "solid_reactive_simple": true,
+                "gradient_up_down": false,
+                "gradient_left_right": false,
+                "band_sat": false,
+                "band_val": false,
+                "band_pinwheel_sat": false,
+                "band_pinwheel_val": false,
+                "band_spiral_sat": false,
+                "band_spiral_val": false,
+                "cycle_all": false,
+                "cycle_left_right": false,
+                "cycle_up_down": false,
+                "rainbow_moving_chevron": false,
+                "cycle_out_in": false,
+                "cycle_out_in_dual": false,
+                "cycle_pinwheel": false,
+                "cycle_spiral": false,
+                "dual_beacon": false,
+                "rainbow_beacon": false,
+                "rainbow_pinwheels": false,
+                "typing_heatmap": false,
+                "digital_rain": false,
+                "solid_reactive": false,
+                "solid_reactive_wide": false,
+                "solid_reactive_multiwide": false,
+                "solid_reactive_cross": false,
+                "solid_reactive_multicross": false,
+                "solid_reactive_nexus": false,
+                "solid_reactive_multinexus": false,
+                "splash": false,
+                "multisplash": false
+            }
+        }
+    }
+}
